@@ -1,0 +1,30 @@
+{
+  "posting": {
+    "min_interval_hours": 1,
+    "daily_limit": 15,
+    "time_slots": [
+      "08:00",
+      "10:00",
+      "12:00",
+      "14:00",
+      "16:00",
+      "18:00",
+      "20:00",
+      "22:00",
+      "00:00",
+      "01:00"
+    ]
+  },
+  "quality": {
+    "min_score": 7.0,
+    "max_retries": 2
+  },
+  "similarity": {
+    "threshold": 0.85,
+    "check_last_n_posts": 100
+  },
+  "generation": {
+    "batch_size": 5,
+    "avoid_last_n_patterns": 3
+  }
+}

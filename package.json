@@ -1,0 +1,31 @@
+{
+  "name": "threads-automation-mvp",
+  "version": "0.1.0",
+  "description": "Threads完全自動化システム - Claude Code実装版（MVP）",
+  "main": "generate.js",
+  "scripts": {
+    "generate": "node generate.js",
+    "post": "node post.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "threads",
+    "automation",
+    "ai",
+    "claude",
+    "sns"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.30.0",
+    "axios": "^1.7.0",
+    "dotenv": "^16.4.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

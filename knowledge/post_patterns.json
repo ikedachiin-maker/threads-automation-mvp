@@ -1,0 +1,109 @@
+{
+  "patterns": [
+    {
+      "id": "short_complete",
+      "name": "短文完結型",
+      "description": "1-2行で完結。インパクト重視。",
+      "structure": "【フック】\n【結論】",
+      "example": "転職エージェントに騙されるな。\n手数料欲しさにゴミ求人勧めてくるから。"
+    },
+    {
+      "id": "comment_bait",
+      "name": "コメント誘導型",
+      "description": "質問で終わって、コメント欄に続きを書く",
+      "structure": "【問題提起】\n【質問投げかけ】",
+      "example": "年収交渉で100万上がった方法あるんだけど、\n知りたい人いる？"
+    },
+    {
+      "id": "thread_expansion",
+      "name": "ツリー展開型",
+      "description": "本文は導入だけ。リプライで詳細展開",
+      "structure": "【導入】\n【続きは返信で】",
+      "example": "面接で落ちる人の共通点3つ見つけた。\n（返信に続く）"
+    },
+    {
+      "id": "list",
+      "name": "リスト型",
+      "description": "箇条書きで見やすく",
+      "structure": "【タイトル】\n1. 〜\n2. 〜\n3. 〜",
+      "example": "転職活動でやっちゃダメなこと3選\n\n1. 退職前に転職先を決めない\n2. 年収だけで選ぶ\n3. 口コミを見ない"
+    },
+    {
+      "id": "expose",
+      "name": "暴露型",
+      "description": "業界の裏側を暴露",
+      "structure": "【衝撃事実】\n【理由】\n【対策】",
+      "example": "転職エージェント、実はあなたの年収低い方が儲かる仕組みになってます。"
+    },
+    {
+      "id": "demand_check",
+      "name": "需要確認型",
+      "description": "「知りたい?」で反応を見る",
+      "structure": "【実績提示】\n【需要確認】",
+      "example": "転職3回して年収2倍にした方法まとめたんだけど、需要ある？"
+    },
+    {
+      "id": "paradox",
+      "name": "逆説型",
+      "description": "常識を覆す主張",
+      "structure": "【常識否定】\n【真実】",
+      "example": "「やりたいこと」で仕事選ぶな。\n年収と環境で選べ。やりがいは後からついてくる。"
+    },
+    {
+      "id": "story",
+      "name": "ストーリー型",
+      "description": "体験談で共感を誘う",
+      "structure": "【状況】\n【転機】\n【結果】",
+      "example": "3社落ちて絶望してた時、\nあるエージェントが言った一言で人生変わった。"
+    },
+    {
+      "id": "comparison",
+      "name": "比較型",
+      "description": "AとBを対比",
+      "structure": "【A（ダメ）】vs【B（良い）】",
+      "example": "年収400万の人と年収800万の人、\n転職活動で何が違うのか比較してみた。"
+    },
+    {
+      "id": "warning",
+      "name": "警告型",
+      "description": "「〜するな」で注意喚起",
+      "structure": "【警告】\n【理由】",
+      "example": "ハローワークで転職するな。\n時間の無駄だから。"
+    },
+    {
+      "id": "step",
+      "name": "ステップ型",
+      "description": "手順を解説",
+      "structure": "【ゴール】\n【ステップ1-3】",
+      "example": "年収100万上げる転職活動の手順\n\n①まず市場価値を調べる\n②..."
+    },
+    {
+      "id": "data",
+      "name": "データ型",
+      "description": "数字で説得力を出す",
+      "structure": "【データ提示】\n【解釈】",
+      "example": "転職で年収上がった人: 67%\n下がった人: 22%\n変わらない: 11%\n\nつまり..."
+    },
+    {
+      "id": "question_first",
+      "name": "質問投げかけ型",
+      "description": "最初から質問",
+      "structure": "【質問】\n【答え】",
+      "example": "なんで転職エージェントは無料なの？\n\n答え: あなたじゃなくて企業から金もらってるから。"
+    },
+    {
+      "id": "empathy",
+      "name": "共感型",
+      "description": "「わかる」を引き出す",
+      "structure": "【あるある】\n【共感】",
+      "example": "面接で「最後に質問ありますか？」\n\nこれ、何聞けばいいか毎回わからんよな。"
+    },
+    {
+      "id": "antithesis",
+      "name": "アンチテーゼ型",
+      "description": "主流意見に反対",
+      "structure": "【主流意見】\n【反論】",
+      "example": "「転職は3年我慢してから」\n\n嘘です。ブラックなら1日でも早く辞めろ。"
+    }
+  ]
+}
