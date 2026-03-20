@@ -187,9 +187,20 @@ THREADS_USER_ID=your_threads_user_id
 # Claude API（投稿生成用）
 ANTHROPIC_API_KEY=your_claude_api_key
 
+# OpenAI API（代替手段）⭐
+OPENAI_API_KEY=your_openai_api_key
+
+# 使用するAI（claude または openai）⭐
+AI_PROVIDER=openai
+
 # 設定
 DRY_RUN=true  # trueの間は実際に投稿しない（テスト用）
 ```
+
+**⭐ OpenAI APIを使う場合**:
+- `AI_PROVIDER=openai` に設定
+- `OPENAI_API_KEY` に OpenAI APIキーを設定
+- GPT-4oが投稿を生成します（品質はClaudeとほぼ同等）
 
 ### 3. ナレッジファイル設定
 

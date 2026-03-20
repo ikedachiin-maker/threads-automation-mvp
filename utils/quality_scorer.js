@@ -4,11 +4,14 @@
  */
 
 const Anthropic = require('@anthropic-ai/sdk');
+const axios = require('axios');
 require('dotenv').config();
 
-const anthropic = new Anthropic({
+const AI_PROVIDER = process.env.AI_PROVIDER || 'claude';
+
+const anthropic = AI_PROVIDER === 'claude' ? new Anthropic({
   apiKey: process.env.ANTHROPIC_API_KEY,
-});
+}) : null;
 
 /**
  * 投稿の品質スコアを自動採点
@@ -73,18 +76,40 @@ ${pattern}
 `;
 
   try {
-    const message = await anthropic.messages.create({
-      model: 'claude-sonnet-4-5-20250929',
-      max_tokens: 2000,
-      messages: [
-        {
-          role: 'user',
-          content: scoringPrompt
-        }
-      ]
-    });
+    let responseText;
 
-    const responseText = message.content[0].text;
+    if (AI_PROVIDER === 'openai') {
+      // OpenAI API使用
+      const response = await axios.post(
+        'https://api.openai.com/v1/chat/completions',
+        {
+          model: 'gpt-4o',
+          messages: [{ role: 'user', content: scoringPrompt }],
+          max_tokens: 2000,
+          temperature: 0.3
+        },
+        {
+          headers: {
+            'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`,
+            'Content-Type': 'application/json'
+          }
+        }
+      );
+      responseText = response.data.choices[0].message.content;
+    } else {
+      // Claude API使用
+      const message = await anthropic.messages.create({
+        model: 'claude-sonnet-4-5-20250929',
+        max_tokens: 2000,
+        messages: [
+          {
+            role: 'user',
+            content: scoringPrompt
+          }
+        ]
+      });
+      responseText = message.content[0].text;
+    }
 
     // JSONを抽出
     const jsonMatch = responseText.match(/```json\n([\s\S]+?)\n```/);

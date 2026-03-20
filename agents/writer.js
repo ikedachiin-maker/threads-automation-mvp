@@ -4,13 +4,16 @@
  */
 
 const Anthropic = require('@anthropic-ai/sdk');
+const axios = require('axios');
 const fs = require('fs');
 const path = require('path');
 require('dotenv').config();
 
-const anthropic = new Anthropic({
+const AI_PROVIDER = process.env.AI_PROVIDER || 'claude';
+
+const anthropic = AI_PROVIDER === 'claude' ? new Anthropic({
   apiKey: process.env.ANTHROPIC_API_KEY,
-});
+}) : null;
 
 /**
  * ナレッジファイルを読み込み
@@ -113,18 +116,40 @@ ${hookExamples}
 `;
 
   try {
-    const message = await anthropic.messages.create({
-      model: 'claude-sonnet-4-5-20250929',
-      max_tokens: 1000,
-      messages: [
-        {
-          role: 'user',
-          content: prompt
-        }
-      ]
-    });
+    let postText;
 
-    const postText = message.content[0].text.trim();
+    if (AI_PROVIDER === 'openai') {
+      // OpenAI API使用
+      const response = await axios.post(
+        'https://api.openai.com/v1/chat/completions',
+        {
+          model: 'gpt-4o',
+          messages: [{ role: 'user', content: prompt }],
+          max_tokens: 1000,
+          temperature: 0.8
+        },
+        {
+          headers: {
+            'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`,
+            'Content-Type': 'application/json'
+          }
+        }
+      );
+      postText = response.data.choices[0].message.content.trim();
+    } else {
+      // Claude API使用
+      const message = await anthropic.messages.create({
+        model: 'claude-sonnet-4-5-20250929',
+        max_tokens: 1000,
+        messages: [
+          {
+            role: 'user',
+            content: prompt
+          }
+        ]
+      });
+      postText = message.content[0].text.trim();
+    }
 
     return {
       text: postText,
@@ -178,18 +203,40 @@ ${scoreResult.suggestions.join('\n')}
 `;
 
   try {
-    const message = await anthropic.messages.create({
-      model: 'claude-sonnet-4-5-20250929',
-      max_tokens: 1000,
-      messages: [
-        {
-          role: 'user',
-          content: prompt
-        }
-      ]
-    });
+    let rewrittenText;
 
-    const rewrittenText = message.content[0].text.trim();
+    if (AI_PROVIDER === 'openai') {
+      // OpenAI API使用
+      const response = await axios.post(
+        'https://api.openai.com/v1/chat/completions',
+        {
+          model: 'gpt-4o',
+          messages: [{ role: 'user', content: prompt }],
+          max_tokens: 1000,
+          temperature: 0.8
+        },
+        {
+          headers: {
+            'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`,
+            'Content-Type': 'application/json'
+          }
+        }
+      );
+      rewrittenText = response.data.choices[0].message.content.trim();
+    } else {
+      // Claude API使用
+      const message = await anthropic.messages.create({
+        model: 'claude-sonnet-4-5-20250929',
+        max_tokens: 1000,
+        messages: [
+          {
+            role: 'user',
+            content: prompt
+          }
+        ]
+      });
+      rewrittenText = message.content[0].text.trim();
+    }
 
     return {
       ...post,
