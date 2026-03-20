@@ -96,10 +96,12 @@ threads-automation-mvp/
 ├── utils/
 │   ├── quality_scorer.js   # 品質採点（10項目）
 │   ├── similarity.js       # 類似度チェック
-│   └── threads_api.js      # Threads API wrapper
+│   ├── threads_api.js      # Threads API wrapper
+│   └── openai_writer.js    # OpenAI API対応（代替）
 ├── config.json             # 設定（投稿間隔等）
 ├── .env.example            # 環境変数テンプレート
 ├── generate.js             # 投稿生成スクリプト
+├── generate-demo.js        # デモモード（APIキー不要）⭐
 ├── post.js                 # 投稿実行スクリプト
 └── package.json
 ```
@@ -220,6 +222,31 @@ DRY_RUN=true  # trueの間は実際に投稿しない（テスト用）
 ---
 
 ## 使い方
+
+### 🎬 デモモード（APIキーなし）⭐ おすすめ
+
+Claude APIキーがない場合でも、デモモードで全機能を試せます！
+
+```bash
+# デモ投稿を生成（5本の転職系サンプル投稿）
+node generate-demo.js
+
+# 投稿をプレビュー（DRY_RUNモード）
+node post.js
+```
+
+**デモ投稿の内容**:
+1. 短文完結型 - エージェント手数料の仕組み暴露
+2. 需要確認型 - 年収交渉100万UP手法
+3. リスト型 - 面接で落ちる人の共通点3つ
+4. アンチテーゼ型 - 「3年我慢」の常識を否定
+5. 警告型 - 職務経歴書テンプレートの危険性
+
+全て品質スコア8.0以上、類似度チェック済みの実用的な投稿です。
+
+---
+
+### 通常モード（Claude API使用）
 
 ### 投稿生成
 
